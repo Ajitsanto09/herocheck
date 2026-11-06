@@ -2,6 +2,11 @@
 
 **Check your hero image. Fix unreadable text. Copy the CSS.**
 
+[![CI](https://github.com/Ajitsanto09/herocheck/actions/workflows/ci.yml/badge.svg)](https://github.com/Ajitsanto09/herocheck/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+**[Try it live →](https://ajitsanto09.github.io/herocheck/)**
+
 Drop in a hero image, type your headline, and see it on desktop, tablet and mobile crops at once.
 HeroCheck measures text contrast on each crop and finds the lightest overlay that makes every one readable.
 
@@ -26,7 +31,7 @@ HeroCheck measures text contrast on each crop and finds the lightest overlay tha
 Needs Node.js 22.18 or newer.
 
 ```bash
-git clone https://github.com/<you>/herocheck.git
+git clone https://github.com/Ajitsanto09/herocheck.git
 cd herocheck
 npm ci
 npm run dev
@@ -47,6 +52,10 @@ Automated checks can't judge everything (busy textures, thin fonts, motion). Tre
 
 Push to `main` on GitHub, then set **Settings → Pages → Source: GitHub Actions**.
 The CI workflow tests, builds and publishes the site. It works under any repository name.
+
+## Contributing
+
+Pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Security
 

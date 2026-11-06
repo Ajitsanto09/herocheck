@@ -28,5 +28,20 @@
   "license": "MIT",
   "engines": {
     "node": ">=22.18"
-  }
+  },
+  "homepage": "https://ajitsanto09.github.io/herocheck/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ajitsanto09/herocheck.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ajitsanto09/herocheck/issues"
+  },
+  "keywords": [
+    "accessibility",
+    "wcag",
+    "contrast",
+    "hero",
+    "css"
+  ]
 }

@@ -18,26 +18,29 @@ export default function App() {
   const [dragging, setDragging] = useState(false)
   const set = <K extends keyof Settings>(k: K, v: Settings[K]) => setS((p) => ({ ...p, [k]: v }))
 
-  async function open(file: Blob) {
-    setMessage('')
+  const latestLoad = useRef(0)
+
+  // Settings are applied together with their image, and only by the newest load, so fast clicks can't mix them up.
+  async function open(file: Blob | Promise<Blob>, settings?: Settings) {
+    const id = ++latestLoad.current
     try {
-      const next = await loadImage(file)
+      const next = await loadImage(await file)
+      if (id !== latestLoad.current) return URL.revokeObjectURL(next.url)
+      if (settings) setS(settings)
+      setMessage('')
       setImg((prev) => {
         if (prev) URL.revokeObjectURL(prev.url)
         return next
       })
     } catch (e) {
-      setMessage(e instanceof Error ? e.message : String(e))
+      if (id === latestLoad.current) setMessage(e instanceof Error ? e.message : String(e))
     }
   }
 
-  async function openExample(i: number) {
-    setS(EXAMPLES[i].settings)
-    await open(await renderExample(EXAMPLES[i].draw))
-  }
+  const openExample = (i: number) => open(renderExample(EXAMPLES[i].draw), EXAMPLES[i].settings)
 
   useEffect(() => {
-    void renderExample(EXAMPLES[0].draw).then(open)
+    void renderExample(EXAMPLES[0].draw).then((blob) => open(blob))
   }, [])
 
   const text = hexToRgb(s.textColor)

@@ -16,11 +16,14 @@ Do not open a public issue for security problems.
 - **Supply chain.** `package-lock.json` is committed and CI installs with `npm ci`. `.npmrc` turns off install scripts. CI runs `npm audit`
   and `npm audit signatures`. GitHub Actions are pinned to commit SHAs with read-only default permissions. Dependabot proposes updates weekly.
 
-## Recommended repository settings (owner)
+## Repository settings
 
-These live in GitHub settings, not in the code:
+These live in GitHub settings, not in the code, and are switched on for this repository:
 
-- Protect `main`: require pull requests, require the **CI / check** status to pass, and block force-pushes.
-- Turn on secret scanning, push protection, Dependabot alerts and private vulnerability reporting.
-- Settings → Pages → Source: **GitHub Actions**.
-- Settings → Actions → General: allow only GitHub-authored and pinned actions; set the default workflow permissions to read-only.
+- `main` is protected by a ruleset: changes go through pull requests, the **check** and **dependency-review** jobs must pass,
+  review threads must be resolved, and force-pushes and branch deletion are blocked.
+- CODEOWNERS requests a maintainer review on every pull request.
+- Secret scanning with push protection, Dependabot alerts and security updates, CodeQL code scanning,
+  and private vulnerability reporting are on.
+- Actions may only use GitHub-authored actions pinned to a full commit SHA. Workflows get read-only tokens by default
+  and cannot approve pull requests.

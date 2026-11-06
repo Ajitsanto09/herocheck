@@ -52,6 +52,7 @@ Automated checks can't judge everything (busy textures, thin fonts, motion). Tre
 
 Push to `main` on GitHub, then set **Settings → Pages → Source: GitHub Actions**.
 The CI workflow tests, builds and publishes the site. It works under any repository name.
+To redeploy without a new commit (for example after a GitHub Pages timeout), run the **CI** workflow from the Actions tab.
 
 ## Contributing
 
